@@ -11,7 +11,10 @@
       <ons-toolbar>
     <div classs="center">ローカルチャット</div>    
         </ons-toolbar>
+      <div style="text-align:center;">
+        <p>コメント入力</p>
       <div id="container"></div>
+        </div>
      </ons-page>
     <link rel="stylesheet" href="css/onsenui.css">
     <link rel="stylesheet" href="css/onsen-css-components.css">
@@ -23,14 +26,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
     <script type="text/babel">
     
-    var CommentList=React.createClass({
-    render:function(){
-    var comments = this.props.comments.map(function(comment,index){
-    return<ons-list-item key={index}>{comment}</ons-list-item>;
-    });
-    return(
-    <ons-list>{comments}</ons-list>
-    );
+      var CommentList=React.createClass({
+          render:function(){
+              var comments = this.props.comments.map(function(comment,index){
+                  return <ons-list-item key={index}>{comment}</ons-list-item>;
+               });
+                return(
+                    <ons-list>{comments}</ons-list>
+                );
     }
     });
     
