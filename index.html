@@ -20,6 +20,60 @@
     <script src="js/react-onsenui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
     <script type="text/babel">
+    
+    var CommentList=React.createClass({
+    render:function(){
+    var comments = this.props.comments.map(function(comment,index){
+    return<li className="list-group-item"key={index}>{comment}</li>;
+    });
+    return(
+    <ul className="list-group">{comments}</ul>
+    );
+    }
+    });
+    
+    var CommentApp=React.createClass({
+    getInitialState:function(){
+    return{
+    comments:[],
+    inputValue:''
+    }
+    },
+    handleSubmit:function(e){
+    e.preventDefault();
+    var comment = this.state.inputValue;
+    This.setState({
+    comments:this.state.comments.concat(comment),
+    inputValue:''
+    })
+    },
+    handleChange:function(e){
+    this.setState({
+    inputValue: e.target.value
+    })
+    },
+    
+    render:function(){
+return(
+<div>
+<form
+className="comment-form"
+onSubmit={this.handleSubmit}>
+<input
+type="text"
+value={this.state.inputValue}
+onChange={this.handleChange} />
+<input type="submit" value="add" />
+    </form>
+    <Commentlist comments={this.state.comments} />
+    </div>
+    ):
+    }
+    });
+    
+    ReactDom.render(<CommentApp />,document.getElementById('container'));
+    </script>
+    
   </body>
 </html>  
  
