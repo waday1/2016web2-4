@@ -7,10 +7,12 @@
     
   </head>
   <body>
-    <div classs="page-header">
-      <h1>ローカルチャット</h1>
+    <ons-page>
+      <ons-toolbar>
+    <div classs="center">ローカルチャット</div>    
+        </ons-toolbar>
       <div id="container"></div>
-     </div>
+     </ons-page>
     <link rel="stylesheet" href="css/onsenui.css">
     <link rel="stylesheet" href="css/onsen-css-components.css">
     
@@ -24,10 +26,10 @@
     var CommentList=React.createClass({
     render:function(){
     var comments = this.props.comments.map(function(comment,index){
-    return<li className="list-group-item"key={index}>{comment}</li>;
+    return<ons-list-item key={index}>{comment}</ons-list-item>;
     });
     return(
-    <ul className="list-group">{comments}</ul>
+    <ons-list>{comments}</ons-list>
     );
     }
     });
@@ -59,11 +61,24 @@ return(
 <form
 className="comment-form"
 onSubmit={this.handleSubmit}>
-<input
+
+<ons-row align = "center">
+<ons-col width="60%" align = "right">
+
+<input class="tent-input"
 type="text"
 value={this.state.inputValue}
 onChange={this.handleChange} />
-<input type="submit" value="add" />
+
+</ons-col>
+<ons-col width="5%" align = "right">
+</ons-col>
+<ons-col align = "left">
+<ons-button type="submit" onClick={this.handleSubmit}>add</ons-button>
+</ons-col>
+<ons-row>
+
+
     </form>
     <Commentlist comments={this.state.comments} />
     </div>
